@@ -13,11 +13,9 @@ class App extends Component {
       otp3: "",
       otp4: "",
       otp5: "",
-     
+      otp6: "",
       disable: true,
     };
-
- 
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -25,8 +23,6 @@ class App extends Component {
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
-
- 
 
   handleOpenModal() {
     this.setState({ showModal: true });
@@ -56,7 +52,7 @@ class App extends Component {
       console.log("next");
 
       const next = elmnt.target.tabIndex;
-      if (next < 5) {
+      if (next < 6) {
         elmnt.target.form.elements[next].focus();
       }
     }
@@ -65,78 +61,96 @@ class App extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.handleOpenModal}>Trigger Modal</button>
-        <ReactModal
-          isOpen={this.state.showModal}
-          ariaHideApp={false}
-          contentLabel="Minimal Modal Example"
-        >
-          <button onClick={this.handleCloseModal}>Close Modal</button>
+        <div className="trigger">
+          <button className="modal" onClick={this.handleOpenModal}>
+            Phone Verification
+          </button>
+        </div>
+        <ReactModal isOpen={this.state.showModal} ariaHideApp={false}>
+          <button className="close" onClick={this.handleCloseModal}>
+            Close
+          </button>
 
-          <form onSubmit={this.handleSubmit}>
-            <div className="otpContainer">
-              <input
-                name="otp1"
-                type="number"
-                autoComplete="off"
-                className="otpInput"
-                value={this.state.otp1}
-                onKeyPress={this.keyPressed}
-                onChange={(e) => this.handleChange("otp1", e)}
-                tabIndex="1"
-                maxLength="1"
-                onKeyUp={(e) => this.inputfocus(e)}
-              />
-              <input
-                name="otp2"
-                type="text"
-                autoComplete="off"
-                className="otpInput"
-                value={this.state.otp2}
-                onChange={(e) => this.handleChange("otp2", e)}
-                tabIndex="2"
-                maxLength="1"
-                onKeyUp={(e) => this.inputfocus(e)}
-              />
-              <input
-                name="otp3"
-                type="text"
-                autoComplete="off"
-                className="otpInput"
-                value={this.state.otp3}
-                onChange={(e) => this.handleChange("otp3", e)}
-                tabIndex="3"
-                maxLength="1"
-                onKeyUp={(e) => this.inputfocus(e)}
-              />
-              <input
-                name="otp4"
-                type="text"
-                autoComplete="off"
-                className="otpInput"
-                value={this.state.otp4}
-                onChange={(e) => this.handleChange("otp4", e)}
-                tabIndex="4"
-                maxLength="1"
-                onKeyUp={(e) => this.inputfocus(e)}
-              />
+          <div className="Content">
+            <h3>Enter the OTP your received on 89206-6XXXX</h3>
 
-              <input
-                name="otp5"
-                type="text"
-                autoComplete="off"
-                className="otpInput"
-                value={this.state.otp5}
-                onChange={(e) => this.handleChange("otp5", e)}
-                tabIndex="5"
-                maxLength="1"
-                onKeyUp={(e) => this.inputfocus(e)}
-              />
-            </div>
-            <Button className="primary" type="submit">
-              Submit
-            </Button>
-          </form>
+            <form onSubmit={this.handleSubmit}>
+              <div className="otpContainer">
+                <input
+                  name="otp1"
+                  type="number"
+                  autoComplete="off"
+                  className="otpInput"
+                  value={this.state.otp1}
+                  onKeyPress={this.keyPressed}
+                  onChange={(e) => this.handleChange("otp1", e)}
+                  tabIndex="1"
+                  maxLength="1"
+                  onKeyUp={(e) => this.inputfocus(e)}
+                />
+                <input
+                  name="otp2"
+                  type="number"
+                  autoComplete="off"
+                  className="otpInput"
+                  value={this.state.otp2}
+                  onChange={(e) => this.handleChange("otp2", e)}
+                  tabIndex="2"
+                  maxLength="1"
+                  onKeyUp={(e) => this.inputfocus(e)}
+                />
+                <input
+                  name="otp3"
+                  type="number"
+                  autoComplete="off"
+                  className="otpInput"
+                  value={this.state.otp3}
+                  onChange={(e) => this.handleChange("otp3", e)}
+                  tabIndex="3"
+                  maxLength="1"
+                  onKeyUp={(e) => this.inputfocus(e)}
+                />
+                <input
+                  name="otp4"
+                  type="number"
+                  autoComplete="off"
+                  className="otpInput"
+                  value={this.state.otp4}
+                  onChange={(e) => this.handleChange("otp4", e)}
+                  tabIndex="4"
+                  maxLength="1"
+                  onKeyUp={(e) => this.inputfocus(e)}
+                />
+
+                <input
+                  name="otp5"
+                  type="number"
+                  autoComplete="off"
+                  className="otpInput"
+                  value={this.state.otp5}
+                  onChange={(e) => this.handleChange("otp5", e)}
+                  tabIndex="5"
+                  maxLength="1"
+                  onKeyUp={(e) => this.inputfocus(e)}
+                />
+
+                <input
+                  name="otp6"
+                  type="number"
+                  autoComplete="off"
+                  className="otpInput"
+                  value={this.state.otp6}
+                  onChange={(e) => this.handleChange("otp6", e)}
+                  tabIndex="6"
+                  maxLength="1"
+                  onKeyUp={(e) => this.inputfocus(e)}
+                />
+              </div>
+              <Button className="primary button" type="submit">
+                Verify Phone Number
+              </Button>
+            </form>
+          </div>
         </ReactModal>
       </div>
     );
